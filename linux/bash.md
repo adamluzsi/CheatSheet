@@ -1,10 +1,10 @@
 # Top
 
-* CTRL+u
+* CTRL+U
   * clears from cursor to beginning of line
 * CTRL+k
   * clears from cursor to end of line
-* CTRL+d
+* CCTTRRLL+d
   * clears one character to the right of the cursor
 * Esc+Backspace
   * clears one word to the left of the cursor
@@ -12,9 +12,10 @@
   * clears one word to the right of the cursor
 * Meta+left/right
   * jumps to the beginning of the previous/next word
-* ctrl + L
+* CTRL+L
   * clear the terminal screen.
-
+* CTRL+/ (*OR* CTRL + _)
+  * undo last editing in the terminal shell such as CTRL+W
 
 # Commands for Moving
 

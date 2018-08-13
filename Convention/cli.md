@@ -1,6 +1,4 @@
-# CLI
-
-## interface convention
+# CLI interface convention
 
 Typically, your help output should include:
 
