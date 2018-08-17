@@ -56,7 +56,7 @@ In some cases, e.g. if the file names are already in a file, you may need to use
 
 ```sh
     find . -name '*.txt' -print0 |
-        while IFS= read -r -d /div>\0' line; do
+        while IFS= read -r -d $'\0' line; do
             process $line
         done
 ```
