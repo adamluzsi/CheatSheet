@@ -3,10 +3,12 @@
 ## create new element
 
 ```sql
-DECLARE NewElement REFERENCE TO OutputRoot.XMLNSC.path.to.new.element;
+DECLARE NewElement REFERENCE TO OutputRoot.XMLNSC.path.to.new.targetNamespace:element;
 
 CREATE LASTCHILD OF OutputRoot.XMLNSC.path.to.new AS NewElement
-	TYPE XMLNSC.Folder NAMESPACE kremo NAME 'element'; -- same as the end of the "OutputRoot.XMLNSC.path.to.new.element"
+	TYPE XMLNSC.Folder
+	NAMESPACE targetNamespace -- namespace if it's required, this is here only for the sake of example
+	NAME 'element'; -- same as the end of the "OutputRoot.XMLNSC.path.to.new.element"
 
 SET NewElement.Key = 'Value';
 ```
