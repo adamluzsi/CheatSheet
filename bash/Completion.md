@@ -14,12 +14,13 @@ complete -F _complete_some_function some_function
 
 It's not possible to have compgen handle filenames safely.
 
-> ##*/
-removes the head until the last '/';
-> $1
-is the command being completed
+## Values
+
+> local cur=${COMP_WORDS[COMP_CWORD]}
+current word
+> local prev=${COMP_WORDS[COMP_CWORD-1]}
+prev word in completion line
 > $2
 is the current completion word
-> $3
-is the previous word
-
+> COMPREPLY=()
+completion words that will be prompted
