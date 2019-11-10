@@ -5,15 +5,31 @@
 See the Parameter Expansion section in the Bash man page.
 A[@] returns the contents of the array, :1:2 takes a slice of length 2, starting at index 1.
 
+# TL;DR
+
 ```bash
-A=( foo bar "a  b c" 42 )
-B=("${A[@]:1:2}")
-C=("${A[@]:1}")       # slice to the end of the array
-echo "${B[@]}"        # bar a  b c
-echo "${B[1]}"        # a  b c
-echo "${C[@]}"        # bar a  b c 42
-echo "${C[@]: -2:2}"  # a  b c 42 # The space before the - is necesssary
+# ${X[@]}                                        the usual whole array
+# ${X[@]:index:length}                           slice from index to index+length-1 inclusive
+# ${X[@]::length}                                slice from 0 to length-1 inclusive
+# ${X[@]:index}                                  slice from index to end of array inclusive
+# ${#X[@]}                                       length of the array
+# X=( "${X[@]}" )                                compact X
+# X=( "${X[@]::$INDEX}" "${X[@]:$((INDEX+1))}" ) remove element at INDEX and compact array
+#
 ```
+
+## Examples
+
+`X=("a" "b" "c c" "d")`
+
+| cmd | res | desc |
+|-----|-----|------|
+| {#X[@]} | 4 | length |
+| ${X[@]} | ("a" "b" "c c" "d") | all |
+| ${X[@]:1} | ("b" "c c" "d") | all from the given index |
+| ${X[@]:1:2} | ("b" "c c") | all with inclusive between index 1 and 2 |
+| ${X[@]:0:${#A[@]} -1} | ("a" "b") | all without last n (-1) |
+
 
 ## [RTFM](https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion)
 
