@@ -1,11 +1,9 @@
 # Array Slicing in bash
 
-## TL;DR
-
 See the Parameter Expansion section in the Bash man page.
-A[@] returns the contents of the array, :1:2 takes a slice of length 2, starting at index 1.
+X[@] returns the contents of the array, :1:2 takes a slice of length 2, starting at index 1.
 
-# TL;DR
+## TL;DR
 
 ```bash
 # ${X[@]}                                        the usual whole array
@@ -18,7 +16,7 @@ A[@] returns the contents of the array, :1:2 takes a slice of length 2, starting
 #
 ```
 
-## Examples
+### Examples
 
 `X=("a" "b" "c c" "d")`
 
@@ -28,7 +26,7 @@ A[@] returns the contents of the array, :1:2 takes a slice of length 2, starting
 | ${X[@]} | ("a" "b" "c c" "d") | all |
 | ${X[@]:1} | ("b" "c c" "d") | all from the given index |
 | ${X[@]:1:2} | ("b" "c c") | all with inclusive between index 1 and 2 |
-| ${X[@]:0:${#A[@]} -1} | ("a" "b") | all without last n (-1) |
+| ${X[@]:0:${#X[@]} -1} | ("a" "b" "c c") | all without last n (-1) |
 
 
 ## [RTFM](https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion)
