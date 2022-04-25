@@ -1,26 +1,27 @@
-# Completion
+# Bash Completion
 
-COMPREPLY manually.
-The following will complete the matching filenames from /some/path, handling filenames safely.
 
-```bash
-_complete_some_function() {
-    local files=("/some/path/$2"*)
-    [[ -e ${files[0]} ]] && COMPREPLY=( "${files[@]##*/}" )
-}
+## Bash compgen
 
-complete -F _complete_some_function some_function
-```
+Options for compgen command are the same as complete, except -p and -r. From compgen man page:
 
-It's not possible to have compgen handle filenames safely.
+compgen
+ compgen [option] [word]
+ Generate possible completion matches for word according to the options, which
+ may be any option accepted by the complete builtin with the exception of -p
+ and -r, and write the matches to the standard output
+For options [abcdefgjksuv]:
 
-## Values
-
-> local cur=${COMP_WORDS[COMP_CWORD]}
-current word
-> local prev=${COMP_WORDS[COMP_CWORD-1]}
-prev word in completion line
-> $2
-is the current completion word
-> COMPREPLY=()
-completion words that will be prompted
+-W means Words from wordlist
+-a means Names of alias
+-b means Names of shell builtins
+-c means Names of all commands
+-d means Names of directory
+-e means Names of exported shell variables
+-f means Names of file and functions
+-g means Names of groups
+-j means Names of job
+-k means Names of Shell reserved words
+-s means Names of service
+-u means Names of userAlias names
+-v means Names of shell variables
